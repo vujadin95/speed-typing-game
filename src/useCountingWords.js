@@ -28,7 +28,6 @@ function useCountingWords(defaultTime = 10) {
     const textArray = text
       .split(" ")
       .filter((word) => word !== "" && word !== "\n");
-    console.log(textArray);
     return textArray.length;
   }
 
