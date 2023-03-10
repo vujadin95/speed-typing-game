@@ -9,7 +9,7 @@ function App() {
     timeRemaining,
     startGame,
     wordCount,
-  } = useCountingWords(5);
+  } = useCountingWords();
 
   return (
     <div className="main-content">
