@@ -1,45 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import useCountingWords from "./useCountingWords";
 
 function App() {
-  const STARTING_TIME = 5;
-
-  const [text, setText] = useState("");
-  const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
-  const [isTimeCounting, setIsTimeCounting] = useState(false);
-  const [wordCount, setWordCount] = useState(0);
-
-  const textareaRef = useRef(null);
-
-  function startGame() {
-    setIsTimeCounting(true);
-    setText("");
-    setTimeRemaining(STARTING_TIME);
-    setWordCount(0);
-  }
-
-  useEffect(() => {
-    textareaRef.current.focus();
-  }, [isTimeCounting]);
-
-  function endGame() {
-    setIsTimeCounting(false);
-    setWordCount(calculateWordCount(text));
-  }
-
-  function calculateWordCount(text) {
-    const textArray = text.split(" ").filter((word) => word !== "");
-    return textArray.length;
-  }
-
-  useEffect(() => {
-    if (timeRemaining > 0 && isTimeCounting) {
-      setTimeout(() => {
-        setTimeRemaining((prevState) => prevState - 1);
-      }, 1000);
-    } else if (timeRemaining === 0) {
-      endGame();
-    }
-  }, [timeRemaining, isTimeCounting]);
+  const {
+    textareaRef,
+    text,
+    setText,
+    isTimeCounting,
+    timeRemaining,
+    startGame,
+    wordCount,
+  } = useCountingWords(5);
 
   return (
     <div className="main-content">
@@ -55,7 +25,7 @@ function App() {
       <button disabled={isTimeCounting} onClick={startGame}>
         START
       </button>
-      <h1>Word count:{wordCount}</h1>
+      <h1>Word count: {wordCount}</h1>
     </div>
   );
 }

@@ -7,9 +7,11 @@
 }
 
 :root {
-  --dark-color: #193d42;
+  --enabled-background-color: #4d5b9e;
   --light-color: #fff;
-  --disabled-background: rgb(153, 147, 147);
+  --disabled-background: #d8cccca2;
+  /* #94D7A2 */
+  /* #D6D8F5 */
 }
 
 html {
@@ -23,39 +25,59 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+#root {
+  width: 100%;
 }
 
 .main-content {
-  max-width: 550px;
+  width: 100%;
   border: 2px solid white;
-  border-radius: 1em;
+  border-radius: 6px;
   background-color: var(--light-color);
   padding: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 textarea {
-  max-width: 100%;
+  width: 100%;
   resize: none;
-  width: 400px;
   height: 200px;
   margin: 1em 0;
   font-family: inherit;
   font-size: 1.6rem;
   padding: 0.5em;
-  background-color: var(--dark-color);
+  background-color: var(--enabled-background-color);
   color: var(--light-color);
+  border: 1px solid var(--enabled-background-color);
+}
+
+textarea:focus {
+  outline: none;
 }
 
 textarea:disabled {
   background-color: var(--disabled-background);
+  color: #121212;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
+h1 {
+  text-align: center;
 }
 
 h4 {
   font-size: 2rem;
   margin-bottom: 0.5em;
+  text-align: center;
 }
 
 button {
@@ -65,13 +87,13 @@ button {
   padding: 0.625em 2em;
   border: none;
   border-radius: 6px;
-  background-color: var(--dark-color);
+  background-color: var(--enabled-background-color);
   color: var(--light-color);
   cursor: pointer;
   margin-bottom: 0.625em;
 }
 
 button:disabled {
-  /* color: grey; */
   background-color: var(--disabled-background);
+  cursor: not-allowed;
 }
